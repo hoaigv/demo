@@ -117,16 +117,12 @@ public class AuthenticationService implements IAuthenticationService {
         if(!(verified && expiration.after(new Date())))
             throw new CustomRunTimeException(ErrorCode.UNAUTHENTICATED);
 
-     try {
+
          if(  invalidatedTokenRepository
                  .existsById(signedJWT.getJWTClaimsSet().getJWTID())){
              throw  new TokenAlreadyInvalidatedException(ErrorCode.UNAUTHENTICATED);
          }
-     }catch (
-             TokenAlreadyInvalidatedException e
-     ){
-         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token đã bị vô hiệu hóa", e);
-     }
+
 
 
 

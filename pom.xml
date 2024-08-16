@@ -91,16 +91,6 @@
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>10.0.0</version> <!-- Use the appropriate version for your Spring Boot 3 setup -->
-            <scope>provided</scope>
-        </dependency>
 
 
 
