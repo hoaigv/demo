@@ -1,4 +1,4 @@
-package com.example.bookshop.dto.request;
+package com.example.bookshop.dto.users;
 
 import com.example.bookshop.validator.DobConstraint;
 import jakarta.validation.constraints.Size;

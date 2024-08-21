@@ -1,4 +1,5 @@
-package com.example.bookshop.dto.response;
+package com.example.bookshop.dto.permission;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -7,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationResponse {
-    String token;
-    boolean authenticated;
+public class PermissionResponse {
+    String name ;
+    String description;
 }

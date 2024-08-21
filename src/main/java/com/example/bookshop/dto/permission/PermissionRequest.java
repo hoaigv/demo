@@ -1,4 +1,4 @@
-package com.example.bookshop.dto.request;
+package com.example.bookshop.dto.permission;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

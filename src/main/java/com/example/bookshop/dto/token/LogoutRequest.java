@@ -1,4 +1,4 @@
-package com.example.bookshop.dto.request;
+package com.example.bookshop.dto.token;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

@@ -1,8 +1,8 @@
 package com.example.bookshop.controller;
 
 import com.example.bookshop.dto.ApiResponse;
-import com.example.bookshop.dto.request.PermissionRequest;
-import com.example.bookshop.dto.response.PermissionResponse;
+import com.example.bookshop.dto.permission.PermissionRequest;
+import com.example.bookshop.dto.permission.PermissionResponse;
 import com.example.bookshop.service.IPermissionService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

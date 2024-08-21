@@ -1,7 +1,7 @@
 package com.example.bookshop.mapper;
 
-import com.example.bookshop.dto.request.PermissionRequest;
-import com.example.bookshop.dto.response.PermissionResponse;
+import com.example.bookshop.dto.permission.PermissionRequest;
+import com.example.bookshop.dto.permission.PermissionResponse;
 import com.example.bookshop.entity.PermissionEntity;
 import org.mapstruct.Mapper;
 

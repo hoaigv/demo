@@ -5,7 +5,9 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Table
 @Entity(name = "user")
@@ -42,6 +44,9 @@ public class UserEntity extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role" , joinColumns = @JoinColumn(name = "user_id") ,inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<RoleEntity> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    List<CommentEntity> books = new ArrayList<>();
 
 
 

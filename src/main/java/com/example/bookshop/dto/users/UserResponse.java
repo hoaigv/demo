@@ -1,5 +1,6 @@
-package com.example.bookshop.dto.response;
+package com.example.bookshop.dto.users;
 
+import com.example.bookshop.dto.role.RoleResponse;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

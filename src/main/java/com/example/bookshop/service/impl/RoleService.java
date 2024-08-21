@@ -1,7 +1,7 @@
 package com.example.bookshop.service.impl;
 
-import com.example.bookshop.dto.request.RoleRequest;
-import com.example.bookshop.dto.response.RoleResponse;
+import com.example.bookshop.dto.role.RoleRequest;
+import com.example.bookshop.dto.role.RoleResponse;
 import com.example.bookshop.entity.RoleEntity;
 import com.example.bookshop.exception.CustomRunTimeException;
 import com.example.bookshop.exception.ErrorCode;

@@ -1,11 +1,12 @@
 package com.example.bookshop.controller;
 
 import com.example.bookshop.dto.ApiResponse;
-import com.example.bookshop.dto.request.AuthenticationRequest;
-import com.example.bookshop.dto.request.IntrospectRequest;
-import com.example.bookshop.dto.request.LogoutRequest;
-import com.example.bookshop.dto.response.AuthenticationResponse;
-import com.example.bookshop.dto.response.IntrospectResponse;
+import com.example.bookshop.dto.token.AuthenticationRequest;
+import com.example.bookshop.dto.token.IntrospectRequest;
+import com.example.bookshop.dto.token.LogoutRequest;
+import com.example.bookshop.dto.token.RefreshRequest;
+import com.example.bookshop.dto.token.AuthenticationResponse;
+import com.example.bookshop.dto.token.IntrospectResponse;
 import com.example.bookshop.service.impl.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import lombok.AccessLevel;
@@ -37,6 +38,13 @@ public class AuthenticationController {
     ApiResponse<IntrospectResponse> introspect(@RequestBody IntrospectRequest introspectRequest) throws ParseException, JOSEException {
         var resp = authenticationService.introspect(introspectRequest);
         return ApiResponse.<IntrospectResponse>builder()
+                .result(resp)
+                .build();
+    }
+    @PostMapping("/refresh")
+    ApiResponse<AuthenticationResponse> refresh(@RequestBody RefreshRequest request) throws ParseException, JOSEException {
+        var resp = authenticationService.refreshToken(request);
+        return ApiResponse.<AuthenticationResponse>builder()
                 .result(resp)
                 .build();
     }

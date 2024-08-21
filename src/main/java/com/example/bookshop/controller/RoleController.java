@@ -1,8 +1,8 @@
 package com.example.bookshop.controller;
 
 import com.example.bookshop.dto.ApiResponse;
-import com.example.bookshop.dto.request.RoleRequest;
-import com.example.bookshop.dto.response.RoleResponse;
+import com.example.bookshop.dto.role.RoleRequest;
+import com.example.bookshop.dto.role.RoleResponse;
 import com.example.bookshop.service.IRoleService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

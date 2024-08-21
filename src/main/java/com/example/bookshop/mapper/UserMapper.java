@@ -1,8 +1,8 @@
 package com.example.bookshop.mapper;
 
-import com.example.bookshop.dto.request.UserCreationRequest;
-import com.example.bookshop.dto.request.UserUpdateRequest;
-import com.example.bookshop.dto.response.UserResponse;
+import com.example.bookshop.dto.users.UserCreationRequest;
+import com.example.bookshop.dto.users.UserUpdateRequest;
+import com.example.bookshop.dto.users.UserResponse;
 import com.example.bookshop.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

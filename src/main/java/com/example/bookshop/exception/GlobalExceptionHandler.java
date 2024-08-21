@@ -1,12 +1,11 @@
 package com.example.bookshop.exception;
 
 import com.example.bookshop.dto.ApiResponse;
-import com.nimbusds.jwt.SignedJWT;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.oauth2.jwt.BadJwtException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,8 +33,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = CustomRunTimeException.class)
     ResponseEntity<ApiResponse<?>> handleCusTomRuntimeException(CustomRunTimeException e) {
-        log.error("Custom runtime exception: ", e);
-        ErrorCode errorCode =e.getErrorCode();
+        ErrorCode errorCode = e.getErrorCode();
         ApiResponse<?> apiResponse = new ApiResponse<>();
 
         apiResponse.setMessage(e.getMessage());
@@ -44,39 +42,22 @@ public class GlobalExceptionHandler {
                 .status(errorCode.getStatusCode())
                 .body(apiResponse);
     }
-    @ExceptionHandler(value = TokenAlreadyInvalidatedException.class)
-    ResponseEntity<SignedJWT> handleTokenAlreadyInvalidatedException(TokenAlreadyInvalidatedException e) {
-        SignedJWT response = null;
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-    }
-
-        @ExceptionHandler(value = AuthenticationServiceException.class)
-        ResponseEntity<ApiResponse<?>> handleAuthenticationServiceException(AuthenticationServiceException e) {
-            ApiResponse<?> apiResponse = new ApiResponse<>();
-            apiResponse.setMessage(ErrorCode.UNAUTHENTICATED.getMessage());
-            apiResponse.setCode(ErrorCode.UNAUTHENTICATED.getCode());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(apiResponse);
-        }
-
-    @ExceptionHandler(value = AccessDeniedException.class)
-    ResponseEntity<ApiResponse<?>> handleAccessDeniedException(AccessDeniedException e) {
+    @ExceptionHandler(value = BadJwtException.class)
+    ResponseEntity<ApiResponse<?>> handleBadJwtException(BadJwtException e) {
         ApiResponse<?> apiResponse = new ApiResponse<>();
-        apiResponse.setMessage(e.getMessage());
-        apiResponse.setCode(1099);
-        return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .body(apiResponse);
+        apiResponse.setMessage(ErrorCode.UNAUTHENTICATED.getMessage());
+        apiResponse.setCode(ErrorCode.UNAUTHENTICATED.getCode());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(apiResponse);
     }
-
-
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     ResponseEntity<ApiResponse<?>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         String enumKey = Objects.requireNonNull(e.getFieldError()).getDefaultMessage();
         ErrorCode errorCode = ErrorCode.INVALID_KEY;
-        try{
-             errorCode = ErrorCode.valueOf(enumKey);
-        }catch (IllegalArgumentException ignored){
+        try {
+            errorCode = ErrorCode.valueOf(enumKey);
+        } catch (IllegalArgumentException ignored) {
 
         }
         ApiResponse<?> apiResponse = new ApiResponse<>();

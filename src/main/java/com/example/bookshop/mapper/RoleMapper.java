@@ -1,7 +1,7 @@
 package com.example.bookshop.mapper;
 
-import com.example.bookshop.dto.request.RoleRequest;
-import com.example.bookshop.dto.response.RoleResponse;
+import com.example.bookshop.dto.role.RoleRequest;
+import com.example.bookshop.dto.role.RoleResponse;
 import com.example.bookshop.entity.RoleEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

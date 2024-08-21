@@ -1,4 +1,4 @@
-package com.example.bookshop.dto.request;
+package com.example.bookshop.dto.users;
 
 import jakarta.validation.constraints.Size;
 import lombok.*;

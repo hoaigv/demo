@@ -1,4 +1,5 @@
-package com.example.bookshop.dto.request;
+package com.example.bookshop.dto.role;
+import com.example.bookshop.dto.permission.PermissionResponse;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,8 +10,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RoleRequest {
+public class RoleResponse {
     String name;
     String description;
-    Set<String> permissions ;
+    Set<PermissionResponse> permissions ;
 }

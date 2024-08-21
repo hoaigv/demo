@@ -1,7 +1,7 @@
 package com.example.bookshop.service;
 
-import com.example.bookshop.dto.request.RoleRequest;
-import com.example.bookshop.dto.response.RoleResponse;
+import com.example.bookshop.dto.role.RoleRequest;
+import com.example.bookshop.dto.role.RoleResponse;
 
 import java.util.List;
 
