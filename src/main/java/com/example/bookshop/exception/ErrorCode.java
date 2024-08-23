@@ -16,6 +16,10 @@ public enum ErrorCode {
     ROLE_NOT_FOUND(1010, "role not found", HttpStatus.NOT_FOUND),
     ACCESS_DENIED(1012, "You do not have permission to access any links.", HttpStatus.FORBIDDEN),
     INVALID_DOB(1011, "Your age must be at least {min} ", HttpStatus.BAD_REQUEST),
+    BOOK_NOT_FOUND(1013, "Book not found", HttpStatus.NOT_FOUND),
+    CATEGORY_NOT_FOUND(1014, "Category not found", HttpStatus.NOT_FOUND),
+    AUTHOR_NOT_FOUND(1015, "AUTHOR_NOT_FOUND not found", HttpStatus.NOT_FOUND),
+    CHAPTER_NOT_FOUND(1016, " CHAPTER_NOT_FOUND not found", HttpStatus.NOT_FOUND)
 
 
     ;

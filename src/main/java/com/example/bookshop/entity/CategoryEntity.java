@@ -1,5 +1,6 @@
 package com.example.bookshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -25,6 +26,7 @@ public class CategoryEntity {
     String description;
 
     @ManyToMany(mappedBy = "categories")
+    @JsonBackReference
     Set<BookEntity> books = new HashSet<>();
 
 }

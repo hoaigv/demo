@@ -9,7 +9,8 @@ import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 @Join(path = "authors",alias = "auth")
 @And({
-        @Spec(path = "auth.name" , params = "authorName" , spec = Like.class)
+        @Spec(path = "auth.name" , params = "authorName" , spec = Like.class),
+        @Spec(path = "title", params = "bookTitle", spec = Like.class)
 })
 public interface BookSpecification extends Specification<BookEntity> {
 

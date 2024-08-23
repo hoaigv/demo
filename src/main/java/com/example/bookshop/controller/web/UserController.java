@@ -1,12 +1,9 @@
-package com.example.bookshop.controller;
+package com.example.bookshop.controller.web;
 
 import com.example.bookshop.dto.ApiResponse;
-import com.example.bookshop.dto.users.UserCreationRequest;
 import com.example.bookshop.dto.users.UserResponse;
-import com.example.bookshop.dto.users.UserUpdateRequest;
 
 import com.example.bookshop.service.IUserService;
-import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController("WebUserController")
 @RequestMapping("/users")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -30,7 +27,6 @@ public class UserController {
     private  final  static  Sort DEFAULT_FILTER_SORT = Sort.by(Sort.Direction.DESC , "createDate");
     @GetMapping
     ApiResponse<List<UserResponse>> getUsers(
-
             @RequestParam(required = false, defaultValue = DEFAULT_FILTER_LIMIT  ) int limit,
             @RequestParam(required = false, defaultValue = DEFAULT_FILTER_OFFSET) int offset
     ) {
@@ -55,17 +51,6 @@ public class UserController {
                 .build();
     }
 
-    @PostMapping("/create")
-    ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
-        return ApiResponse.<UserResponse>builder()
-                .result( userService.createUser(request))
-                .build();
-    }
-    @PutMapping("/{userId}")
-    ApiResponse<UserResponse> updateUser(@RequestBody @Valid UserUpdateRequest request,@PathVariable String userId) {
-        return ApiResponse.<UserResponse>builder()
-                .result(userService.updateUser(userId,request))
-                .build();
-    }
+
 
 }

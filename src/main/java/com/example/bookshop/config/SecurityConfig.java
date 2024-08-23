@@ -24,7 +24,8 @@ import org.springframework.web.filter.CorsFilter;
 @EnableMethodSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SecurityConfig {
-    String[] PUBLIC_ENDPOINT = {"/auth/token", "/auth/introspect", "/auth/logout", "/auth/refresh"};
+    String[] PUBLIC_ENDPOINT = {"/auth/token", "/auth/introspect", "/auth/logout", "/auth/refresh","/books/create","/chapter/create/*","/admin/category/create"};
+    String[] PUBLIC_ENDPOINT_GET = {"/books/**","/chapter/**","/admin/category"};
     CustomJwtDecoder jwtDecoder;
     RestAccessDeniedHandler restAccessDeniedHandler;
 
@@ -39,9 +40,11 @@ public class SecurityConfig {
                 request
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT)
                         .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/users")
-                        .hasAuthority(Role.ROLE_ADMIN.name())
-                        .requestMatchers(HttpMethod.PUT, "/users/")
+                        .requestMatchers(HttpMethod.GET,PUBLIC_ENDPOINT_GET)
+                        .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/users/**")
+                        .hasAuthority(Role.ROLE_USER.name())
+                        .requestMatchers(HttpMethod.PUT, "/admin/users/**")
                         .hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest()
                         .authenticated());
