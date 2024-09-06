@@ -1,4 +1,4 @@
-package com.example.bookshop.config;
+package com.example.bookshop.jwt;
 
 import com.example.bookshop.constant.PredefinedRole;
 import com.example.bookshop.entity.RoleEntity;

@@ -1,6 +1,6 @@
 package com.example.bookshop.infra.config;
 
-import com.example.bookshop.config.RestAccessDeniedHandler;
+import com.example.bookshop.jwt.RestAccessDeniedHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

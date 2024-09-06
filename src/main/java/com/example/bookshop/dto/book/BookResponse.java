@@ -4,8 +4,8 @@ import com.example.bookshop.dto.chapter.ChapterTitleResponse;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 @Data
 @NoArgsConstructor
@@ -22,9 +22,7 @@ public class BookResponse {
     String publisher;
     Set<String> authors;
     Set<String> categories;
-    Set<ChapterTitleResponse> chapters;
+    List<ChapterTitleResponse> chapters;
 
-    public void setAuthor(Stream<String> stringStream) {
-        stringStream.forEach(authors::add);
-    }
+
 }

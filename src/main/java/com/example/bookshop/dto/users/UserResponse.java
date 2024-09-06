@@ -1,6 +1,7 @@
 package com.example.bookshop.dto.users;
 
 import com.example.bookshop.dto.role.RoleResponse;
+import jakarta.persistence.Lob;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -32,6 +33,9 @@ public class UserResponse {
     boolean gender;
 
     boolean status;
+
+    @Lob
+    String image;
 
     Set<RoleResponse> roles ;
 }

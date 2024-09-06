@@ -1,5 +1,6 @@
 package com.example.bookshop.dto.users;
 
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,6 +33,9 @@ public class UserUpdateRequest {
     Date birthDate;
 
     boolean gender;
+
+    @Lob
+    String image;
 
     List<String> roles;
 

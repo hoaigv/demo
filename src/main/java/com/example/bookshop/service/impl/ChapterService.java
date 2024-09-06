@@ -1,9 +1,6 @@
 package com.example.bookshop.service.impl;
 
-import com.example.bookshop.dto.chapter.ChapterCreateRequest;
-import com.example.bookshop.dto.chapter.ChapterCreateResponse;
-import com.example.bookshop.dto.chapter.ChapterReadResponse;
-import com.example.bookshop.dto.chapter.ChapterTitleResponse;
+import com.example.bookshop.dto.chapter.*;
 import com.example.bookshop.entity.BookEntity;
 import com.example.bookshop.entity.ChapterEntity;
 import com.example.bookshop.exception.CustomRunTimeException;
@@ -19,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,8 +28,8 @@ public class ChapterService implements IChapterService {
     BookRepository bookRepository;
     ChapterMapper chapterMapper;
     @Override
-    public Set<ChapterTitleResponse> getAllChapterTitles(String bookId) {
-        Set<ChapterTitleResponse> chapterTitleResponses = new HashSet<>();
+    public List<ChapterTitleResponse> getAllChapterTitles(String bookId) {
+        List<ChapterTitleResponse> chapterTitleResponses = new ArrayList<>();
         var chapters = chapterRepository.findByBookId(bookId);
         if(!chapters.isEmpty()){
             chapters.forEach(chapterEntity ->
@@ -69,4 +66,21 @@ public class ChapterService implements IChapterService {
         bookRepository.save(bookEntity);
         return chapterMapper.entityToResponse(result);
     }
+
+    @Override
+    @Transactional
+    public ChapterUpdateResponse updateChapter(String chapterId, ChapterUpdateRequest request) {
+        var oldChapter = chapterRepository.findById(chapterId).orElseThrow(
+                ()-> new CustomRunTimeException(ErrorCode.CHAPTER_NOT_FOUND)
+        );
+        var chapterUpdate = chapterMapper.oldChapterToEntity(oldChapter,request);
+
+        chapterRepository.save(chapterUpdate);
+
+        return ChapterUpdateResponse.builder()
+                .title(chapterUpdate.getTitle())
+                .build();
+    }
+
+
 }

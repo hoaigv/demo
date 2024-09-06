@@ -19,7 +19,12 @@ public enum ErrorCode {
     BOOK_NOT_FOUND(1013, "Book not found", HttpStatus.NOT_FOUND),
     CATEGORY_NOT_FOUND(1014, "Category not found", HttpStatus.NOT_FOUND),
     AUTHOR_NOT_FOUND(1015, "AUTHOR_NOT_FOUND not found", HttpStatus.NOT_FOUND),
-    CHAPTER_NOT_FOUND(1016, " CHAPTER_NOT_FOUND not found", HttpStatus.NOT_FOUND)
+    CHAPTER_NOT_FOUND(1016, " CHAPTER_NOT_FOUND not found", HttpStatus.NOT_FOUND),
+    COMMENT_NOT_FOUND(1016, " COMMENT_NOT_FOUND not found", HttpStatus.NOT_FOUND),
+    FILE_NOT_FOUND(1016, " FILE not found", HttpStatus.NOT_FOUND),
+    NOTIFICATION_NOT_SUCCESS(1017, " NOTIFICATION_NOT_SUCCESS", HttpStatus.NOT_FOUND)
+
+
 
 
     ;

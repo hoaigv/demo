@@ -1,4 +1,4 @@
-package com.example.bookshop.config;
+package com.example.bookshop.jwt;
 
 import com.example.bookshop.enums.Role;
 import lombok.AccessLevel;
@@ -24,8 +24,10 @@ import org.springframework.web.filter.CorsFilter;
 @EnableMethodSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SecurityConfig {
-    String[] PUBLIC_ENDPOINT = {"/auth/token", "/auth/introspect", "/auth/logout", "/auth/refresh","/books/create","/chapter/create/*","/admin/category/create"};
-    String[] PUBLIC_ENDPOINT_GET = {"/books/**","/chapter/**","/admin/category"};
+    String[] PUBLIC_ENDPOINT = {"/auth/token", "/auth/introspect", "/auth/logout", "/auth/refresh","/api/books/create","/api/chapter/create/*","/api/admin/category/create","/api/comment/**","/notification/token"};
+    String[] PUBLIC_ENDPOINT_GET = {"/api/books/**","/api/chapter/**","/api/admin/category"};
+    String [] PUBLIC_ENDPOINT_PUT = {"/api/books/**","/api/chapter/**","/api/admin/category"};
+    String [] PRIVATE_ENDPOINT_POST = {"/api/comment/**"};
     CustomJwtDecoder jwtDecoder;
     RestAccessDeniedHandler restAccessDeniedHandler;
 
@@ -34,18 +36,21 @@ public class SecurityConfig {
         this.restAccessDeniedHandler = restAccessDeniedHandler;
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(request ->
                 request
                         .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT)
                         .permitAll()
+                        .requestMatchers(HttpMethod.POST , "/api/users/create")
+                        .permitAll()
                         .requestMatchers(HttpMethod.GET,PUBLIC_ENDPOINT_GET)
                         .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/users/**")
+                        .requestMatchers(HttpMethod.PUT,PUBLIC_ENDPOINT_PUT)
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST,PRIVATE_ENDPOINT_POST )
                         .hasAuthority(Role.ROLE_USER.name())
-                        .requestMatchers(HttpMethod.PUT, "/admin/users/**")
-                        .hasAuthority(Role.ROLE_ADMIN.name())
                         .anyRequest()
                         .authenticated());
 

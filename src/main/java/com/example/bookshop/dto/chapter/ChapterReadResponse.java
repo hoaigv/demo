@@ -10,5 +10,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChapterReadResponse {
     String id ;
+    String title ;
     String content;
+    int chap ;
 }

@@ -1,4 +1,4 @@
-package com.example.bookshop.config;
+package com.example.bookshop.jwt;
 
 import com.example.bookshop.dto.ApiResponse;
 import com.example.bookshop.exception.ErrorCode;

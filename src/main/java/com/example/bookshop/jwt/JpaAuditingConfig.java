@@ -1,4 +1,4 @@
-package com.example.bookshop.config;
+package com.example.bookshop.jwt;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

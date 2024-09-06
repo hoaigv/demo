@@ -1,6 +1,7 @@
 package com.example.bookshop.dto.chapter;
 
 
+import jakarta.persistence.Lob;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,7 +12,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChapterCreateRequest {
     String title;
+    @Lob
     String content;
-    int     chap;
+    int   chap;
 
 }
